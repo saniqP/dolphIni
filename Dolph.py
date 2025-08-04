@@ -3,7 +3,7 @@ import sys
 import json
 
 
-commands_dir = os.path.expanduser('~/.config/DolphTerm/Commands')
+commands_dir = os.path.expanduser('~/.config/DolphIni/Commands')
 
 def search_project(name):
    for file in os.listdir(commands_dir):
