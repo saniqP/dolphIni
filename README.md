@@ -15,7 +15,7 @@ chmod +x makepkg
 
 ## Parameters
 
-Configuration is done via JSON in `~/.config/DolpIni/Commands/config.json`:
+this is commands parametrs `~/.config/DolpIni/Commands/example.json`:
 
 ```json
 {
