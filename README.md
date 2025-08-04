@@ -19,7 +19,7 @@ Configuration is done via JSON in `~/.config/DolpIni/Commands/config.json`:
 
 ```json
 {
-  "only_command": boolean,    // If true, only runs the specified command
+  "only_command": false,    # If true, only runs the specified command
   "venv": "string",          // Path to Python virtual environment
   "path": "string",          // Path to project folder (containing main file)
   "main": "string",          // Path to main executable file
