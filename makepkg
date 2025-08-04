@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "makeing directories"
+mkdir ~/.config/DolphIni
+cp * ~/.config/DolphIni
+
+echo "alias dolphIni='python3 ~/.config/DolphIni/Dolph.py'" >> ~/.bashrc
+echo "alias dolphIni='python3 ~/.config/DolphIni/Dolph.py'" >> ~/.zshrc
+
+dolphIni
