@@ -15,9 +15,11 @@ chmod +x makepkg
 
  ## parametrs
 
- "only_command"
- "venv" //path to venv
- "path" //path to project folder(folder to Main file)
- "main" //path to main file
-
- "command" //workind only when "only_command" = true
+ {
+  "only_command": boolean,    // If true, only runs the specified command
+  "venv": "string",          // Path to Python virtual environment
+  "path": "string",          // Path to project folder (containing main file)
+  "main": "string",          // Path to main executable file
+  
+  "command": "string"        // Command to execute (only when only_command=true)
+}
