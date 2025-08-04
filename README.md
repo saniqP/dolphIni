@@ -1,7 +1,7 @@
 # dolphIni
 
 ## install
-```zsh
+```bash
 git clone https://github.com/saniqP/dolphIni.git
 cd dolphIni
 chmod +x makepkg
