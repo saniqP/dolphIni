@@ -1,0 +1,7 @@
+{
+    "venv": "path/to/venv",
+    "path": "path/to/project",
+   
+    "only_command": false,
+    "main": "path/to/main/file"
+}
