@@ -1,19 +1,19 @@
 # gooseTerm
 
-## install
+## установка
 ```bash
 git clone https://github.com/saniqP/gooseTerm.git
 cd gooseTerm
 chmod +x makepkg
 ./makepkg
 ```
-перезапустите терминал и введите команду `goose`
+перезапустите терминал и введите команду ```goose```
 
- ## commands
+ ## создание команд
 
 что бы создать команду надо создать директорию с названием команды в ~/.config/goose/cmd/ а в вашей директоии создать parametrs.json и settings.json 
 
-## Parameters
+## параметры
 
 `~/.config/DolpIni/Commands/example/parametrs.json`:
 
