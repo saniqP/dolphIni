@@ -15,13 +15,25 @@ chmod +x makepkg
 
 ## Parameters
 
-this is commands parametrs `~/.config/DolpIni/Commands/example.json`:
+`~/.config/DolpIni/Commands/example/parametrs.json`:
 
 ```json
 {
-  "only_command": "boolean If true, only runs the specified command",
-  "venv": "string Path to Python virtual environment",
-  "path": "string Path to project folder (containing main file)",
-  "main": "string Path to main executable file",
-  "command": "string Command to execute (only when only_command=true)"
+    "path": "None",
+    "file": "g.sh",
+    "venv": "path",
+    "command": "com",
+    "
 }
+```
+
+`~/.config/DolpIni/Commands/example/settings.json`:
+
+```json
+{
+    "python": false,
+    "bash": true,
+    "venv": false,
+    "one_command": false
+}
+```
