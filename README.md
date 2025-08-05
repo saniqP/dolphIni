@@ -1,4 +1,4 @@
-# dolphIni
+# gooseTerm
 
 ## install
 ```bash
@@ -7,11 +7,11 @@ cd gooseTerm
 chmod +x makepkg
 ./makepkg
 ```
- restart terminal and enter command goose
+перезапустите терминал и введите команду `goose`
 
  ## commands
 
- to create a command you need to create a directory with the name of the command in ~/.config/goose/cmd/ and in your directory create parametrs.json and settings.json
+что бы создать команду надо создать директорию с названием команды в ~/.config/goose/cmd/ а в вашей директоии создать parametrs.json и settings.json 
 
 ## Parameters
 
