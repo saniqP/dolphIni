@@ -15,7 +15,7 @@ chmod +x makepkg
 
 ## параметры
 
-`~/.config/DolpIni/Commands/example/parametrs.json`:
+`~/.config/goose/Commands/example/parametrs.json`:
 
 ```json
 {
@@ -26,7 +26,7 @@ chmod +x makepkg
 }
 ```
 
-`~/.config/DolpIni/Commands/example/settings.json`:
+`~/.config/goose/Commands/example/settings.json`:
 
 ```json
 {
