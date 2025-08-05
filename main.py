@@ -57,6 +57,10 @@ def main():
 
         elif user_command.startswith('cd'):
             os.chdir(user_command.split(' ')[-1])
+
+        elif user_command == 'commands':
+            for file in os.listdir(commands_dir):
+                print(file)
             
         
         elif user_command.startswith('start$'):
