@@ -48,7 +48,7 @@ def main():
         current_dir = os.getcwd()
         username = getpass.getuser()
 
-        user_command = input(f'{DIRECTORY}/{current_dir.split('/')[-1]}{TERMINAL}@{USER}{username}{TERMINAL}${TEXT}')
+        user_command = input(f'{DIRECTORY}{"home" if current_dir.split('/')[-1] == username else current_dir.split('/')[-1]}{TERMINAL}@{USER}{username}{TERMINAL} ~> {TEXT}')
 
         history.append(user_command)
 
