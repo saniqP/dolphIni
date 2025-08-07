@@ -12,11 +12,10 @@ def hex_to_ansi(hex_color: str) -> str:
 
 commands_dir = os.path.expanduser('~/.config/goose/cmd')
 rc_dir = os.path.expanduser('~/iuirc')  #maybe
-history = []
 
-with open(os.path.expanduser('~/.config/goose/history'), 'r') as file:
+with open(os.path.expanduser('~/.config/goose/history.tor'), 'r') as file:
     for line in file:
-        readline.add_history(line.replace('\n', ''))
+        readline.add_history(line.split('#')[-1].replace('\n', ''))
 
 try:
     with open(os.path.expanduser('~/.config/goose/colors.json'), 'r') as file:
@@ -52,14 +51,15 @@ def main():
 
         current_dir = os.getcwd()
         username = getpass.getuser()
+        last_command = ""
 
 
-        user_command = input(f'{DIRECTORY}{"home" if current_dir.split('/')[-1] == username else current_dir.split('/')[-1]}{TERMINAL}@{USER}{username}{TERMINAL} ~> {TEXT}')
+        user_command = input(f"{DIRECTORY}{'home' if current_dir.split('/')[-1] == username else current_dir.split('/')[-1]}{TERMINAL}@{USER}{username}{TERMINAL} ~> {TEXT}")
 
-        with open(os.path.expanduser('~/.config/goose/history'), 'a') as file:
-            file.write(f'{user_command}\n')
+        if user_command != "":
+            with open(os.path.expanduser('~/.config/goose/history.tor'), 'a') as file:
+                file.write(f'@ #{user_command}\n')
 
-        history.append(user_command)
 
 
         if user_command == 'exit':

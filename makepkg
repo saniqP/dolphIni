@@ -4,6 +4,9 @@
 CONFIG_DIR="$HOME/.config/goose"
 SCRIPT_NAME="goose"  # Имя команды для вызова
 
+# Устанавливаем пакеты
+sudo pacman -S pypy3
+
 # Создаем директорию конфигов
 mkdir -p "$CONFIG_DIR/cmd" || { echo "Error: Cannot create config directory"; exit 1; }
 
@@ -11,7 +14,7 @@ mkdir -p "$CONFIG_DIR/cmd" || { echo "Error: Cannot create config directory"; ex
 cp -r ./* "$CONFIG_DIR/" || { echo "Error: Cannot copy files"; exit 1; }
 
 # Добавляем алиас в .bashrc и .zshrc (если есть)
-ALIAS_CMD="alias $SCRIPT_NAME='python3 $CONFIG_DIR/main.py'"
+ALIAS_CMD="alias $SCRIPT_NAME='pypy3 $CONFIG_DIR/main.py'"
 
 for RC_FILE in ~/.bashrc ~/.zshrc; do
     if [ -f "$RC_FILE" ]; then
