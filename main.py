@@ -11,7 +11,12 @@ def hex_to_ansi(hex_color: str) -> str:
     return f"\033[38;2;{r};{g};{b}m"
 
 commands_dir = os.path.expanduser('~/.config/goose/cmd')
+rc_dir = os.path.expanduser('~/iuirc')  #maybe
 history = []
+
+with open(os.path.expanduser('~/.config/goose/history'), 'r') as file:
+    for line in file:
+        readline.add_history(line.replace('\n', ''))
 
 try:
     with open(os.path.expanduser('~/.config/goose/colors.json'), 'r') as file:
@@ -48,9 +53,14 @@ def main():
         current_dir = os.getcwd()
         username = getpass.getuser()
 
+
         user_command = input(f'{DIRECTORY}{"home" if current_dir.split('/')[-1] == username else current_dir.split('/')[-1]}{TERMINAL}@{USER}{username}{TERMINAL} ~> {TEXT}')
 
+        with open(os.path.expanduser('~/.config/goose/history'), 'a') as file:
+            file.write(f'{user_command}\n')
+
         history.append(user_command)
+
 
         if user_command == 'exit':
             break
@@ -97,8 +107,3 @@ def main():
 if __name__ == '__main__':
     main()
         
-
-
-
-
-
