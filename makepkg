@@ -4,8 +4,10 @@
 CONFIG_DIR="$HOME/.config/goose"
 SCRIPT_NAME="goose"  # Имя команды для вызова
 
-# Устанавливаем пакеты
-sudo pacman -S pypy3
+# Устанавливаем пypy3 (если ещё не установлен)
+if ! command -v pypy3 &> /dev/null; then
+    sudo pacman -S pypy3 --noconfirm || { echo "Error: Cannot install pypy3"; exit 1; }
+fi
 
 # Создаем директорию конфигов
 mkdir -p "$CONFIG_DIR/cmd" || { echo "Error: Cannot create config directory"; exit 1; }
@@ -13,12 +15,17 @@ mkdir -p "$CONFIG_DIR/cmd" || { echo "Error: Cannot create config directory"; ex
 # Копируем файлы проекта
 cp -r ./* "$CONFIG_DIR/" || { echo "Error: Cannot copy files"; exit 1; }
 
-# Добавляем алиас в .bashrc и .zshrc (если есть)
-ALIAS_CMD="alias $SCRIPT_NAME='pypy3 $CONFIG_DIR/main.py'"
+# Полный путь к pypy3 и main.py
+PYPY3_PATH=$(command -v pypy3) || { echo "Error: pypy3 not found in PATH"; exit 1; }
+MAIN_PY_PATH="$CONFIG_DIR/main.py"
 
+# Алиас с абсолютными путями
+ALIAS_CMD="alias $SCRIPT_NAME='\"$PYPY3_PATH\" \"$MAIN_PY_PATH\"'"
+
+# Добавляем алиас в .bashrc и .zshrc (если есть)
 for RC_FILE in ~/.bashrc ~/.zshrc; do
     if [ -f "$RC_FILE" ]; then
-        if ! grep -q "$ALIAS_CMD" "$RC_FILE"; then
+        if ! grep -qF "$ALIAS_CMD" "$RC_FILE"; then
             echo "$ALIAS_CMD" >> "$RC_FILE"
             echo "Alias added to $RC_FILE"
         else
@@ -28,7 +35,7 @@ for RC_FILE in ~/.bashrc ~/.zshrc; do
 done
 
 # Даем права на исполнение главного файла
-chmod +x "$CONFIG_DIR/main.py" || echo "Warning: Cannot make main.py executable"
+chmod +x "$MAIN_PY_PATH" || echo "Warning: Cannot make main.py executable"
 
 echo ""
-echo "instalation complited!"
+echo "Installation completed!"
